@@ -33,6 +33,27 @@ const tabs = (headerSelector, tabSelector, contentSelector, activeClass) => {
             });
         }
     });
+
+    header.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") {
+            const target = e.target;
+            tabs.forEach((tab, i) => {
+                if (target === tab || target.parentNode === tab) {
+                    hideTabContent();
+                    showTabContent(i);
+                }
+            });
+        }
+    });
 };
 
-export default tabs;
+const tabsParam = (parametrs) => {
+    return tabs(
+        parametrs.headerSelector,
+        parametrs.tabSelector,
+        parametrs.contentSelector,
+        parametrs.activeClass
+    );
+};
+
+export default tabsParam;
