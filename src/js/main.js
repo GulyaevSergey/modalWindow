@@ -4,7 +4,6 @@ import tabsParam from "./modules/tabs";
 import forms from "./modules/forms";
 
 window.addEventListener("DOMContentLoaded", () => {
-    "use strict";
     modal();
     tabsParam({
         headerSelector: ".glazing_slider",

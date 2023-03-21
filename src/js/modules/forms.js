@@ -17,7 +17,7 @@ const forms = () => {
 
     const postData = async (url, data) => {
         document.querySelector(".status").textContent = messages.loading;
-        let res = await fetch(url, {
+        const res = await fetch(url, {
             method: "POST",
             body: data,
         });
@@ -32,7 +32,7 @@ const forms = () => {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            let statusMessage = document.createElement("div");
+            const statusMessage = document.createElement("div");
             statusMessage.classList.add("status");
             form.appendChild(statusMessage);
 
@@ -40,7 +40,6 @@ const forms = () => {
 
             postData("assets/server.php", formData)
                 .then((res) => {
-                    console.lof(res);
                     statusMessage.textContent = messages.success;
                 })
                 .catch(() => {
