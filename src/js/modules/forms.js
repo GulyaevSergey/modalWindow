@@ -20,6 +20,7 @@ const forms = () => {
         const res = await fetch(url, {
             method: "POST",
             body: data,
+            mode: "no-cors",
         });
         return await res.text();
     };
@@ -38,7 +39,18 @@ const forms = () => {
 
             const formData = new FormData(form);
 
-            postData("assets/server.php", formData)
+            const object = {};
+
+            const objJson = JSON.stringify(
+                formData.forEach((value, key) => {
+                    object[key] = value;
+                })
+            );
+
+            postData(
+                "https://simple-server-cumz.onrender.com/api/data",
+                objJson
+            )
                 .then((res) => {
                     statusMessage.textContent = messages.success;
                 })
