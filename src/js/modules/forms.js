@@ -1,13 +1,10 @@
-const forms = () => {
+import checkNumInputs from "./checkNumInputs";
+
+const forms = (state) => {
     const allForms = document.querySelectorAll("form");
     const inputs = document.querySelectorAll("input");
-    const phoneInputs = document.querySelectorAll('input[name="user_phone"]');
 
-    phoneInputs.forEach((input) => {
-        input.addEventListener("input", () => {
-            input.value = input.value.replace(/\D/, "");
-        });
-    });
+    checkNumInputs('input[name="user_phone"]');
 
     const messages = {
         loading: "Загрузка...",
@@ -19,8 +16,10 @@ const forms = () => {
         document.querySelector(".status").textContent = messages.loading;
         const res = await fetch(url, {
             method: "POST",
-            body: data,
-            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
         });
         return await res.text();
     };
@@ -38,18 +37,21 @@ const forms = () => {
             form.appendChild(statusMessage);
 
             const formData = new FormData(form);
+            if (form.getAttribute("data-calc") === "end") {
+                for (let key in state) {
+                    jsonObject.append(key, state[key]);
+                }
+            }
 
-            const object = {};
+            const jsonObject = {};
 
-            const objJson = JSON.stringify(
-                formData.forEach((value, key) => {
-                    object[key] = value;
-                })
-            );
+            for (const [key, value] of formData.entries()) {
+                jsonObject[key] = value;
+            }
 
             postData(
                 "https://simple-server-cumz.onrender.com/api/data",
-                objJson
+                jsonObject
             )
                 .then((res) => {
                     statusMessage.textContent = messages.success;
