@@ -37,11 +37,6 @@ const forms = (state) => {
             form.appendChild(statusMessage);
 
             const formData = new FormData(form);
-            if (form.getAttribute("data-calc") === "end") {
-                for (let key in state) {
-                    jsonObject.append(key, state[key]);
-                }
-            }
 
             const jsonObject = {};
 
@@ -65,6 +60,11 @@ const forms = (state) => {
                         statusMessage.remove();
                     }, 5000);
                 });
+            if (form.getAttribute("data-calc") === "end") {
+                for (let key in state) {
+                    formData.append(key, state[key]);
+                }
+            }
         });
     });
 };
