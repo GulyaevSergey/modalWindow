@@ -13,6 +13,12 @@ body {
   color: #000000;
 }
 
+button:focus-visible, a:focus-visible{
+  background-color: #d2fbce;
+  border: 1px solid #36842d;
+}
+
+
 .status {
   display: block;
   color: red;
@@ -23,11 +29,14 @@ a:hover {
 }
 
 a:focus,
-button:focus,
-input:focus,
 textarea:focus {
   outline: none;
 }
+
+input:focus-visible{
+  background-color: #d2fbce;
+}
+
 
 .no-padding {
   padding: 0 !important;
@@ -1025,7 +1034,7 @@ textarea:focus {
 }
 
 .popup_calc_profile_content .checkbox {
-  display: none;
+  opacity: 0;
 }
 
 .popup_calc_profile_content .checkbox-custom {
