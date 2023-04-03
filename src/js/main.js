@@ -1,11 +1,14 @@
-import "./slider";
-import modal from "./modules/modal";
-import tabsParam from "./modules/tabs";
-import forms from "./modules/forms";
-import changeModalState from "./modules/changeModalState";
-import timer from "./modules/timer";
+import {
+    slider,
+    modal,
+    tabsParam,
+    forms,
+    changeModalState,
+    timer,
+} from "./modules/index";
 
 window.addEventListener("DOMContentLoaded", () => {
+    slider();
     const modalState = {};
     const deadline = "2024-04-02";
 
