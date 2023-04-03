@@ -1,9 +1,18 @@
-import "./slider";
-import modal from "./modules/modal";
-import tabsParam from "./modules/tabs";
-import forms from "./modules/forms";
+import {
+    slider,
+    modal,
+    tabsParam,
+    forms,
+    changeModalState,
+    timer,
+} from "./modules/index";
 
 window.addEventListener("DOMContentLoaded", () => {
+    slider();
+    const modalState = {};
+    const deadline = "2024-04-02";
+
+    changeModalState(modalState);
     modal();
     tabsParam({
         headerSelector: ".glazing_slider",
@@ -24,5 +33,6 @@ window.addEventListener("DOMContentLoaded", () => {
         activeClass: "do_image_more",
         display: "inline-block",
     });
-    forms();
+    forms(modalState);
+    timer(".container1", deadline);
 });

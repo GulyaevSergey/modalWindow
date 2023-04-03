@@ -1,4 +1,10 @@
-const tabs = (headerSelector, tabSelector, contentSelector, activeClass, display ="block") => {
+const tabs = (
+    headerSelector,
+    tabSelector,
+    contentSelector,
+    activeClass,
+    display = "block"
+) => {
     const header = document.querySelector(headerSelector);
     const tabs = document.querySelectorAll(tabSelector);
     const contents = document.querySelectorAll(contentSelector);
@@ -58,4 +64,4 @@ const tabsParam = (parametrs) => {
     );
 };
 
-export default tabsParam;
+export { tabsParam };
