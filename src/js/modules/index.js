@@ -4,3 +4,4 @@ export { tabsParam } from "./tabs";
 export { forms } from "./forms";
 export { changeModalState } from "./changeModalState";
 export { timer } from "./timer";
+export { images } from "./images";

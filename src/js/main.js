@@ -5,6 +5,7 @@ import {
     forms,
     changeModalState,
     timer,
+    images,
 } from "./modules/index";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -35,4 +36,5 @@ window.addEventListener("DOMContentLoaded", () => {
     });
     forms(modalState);
     timer(".container1", deadline);
+    images();
 });
